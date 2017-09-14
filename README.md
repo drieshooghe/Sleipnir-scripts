@@ -36,7 +36,6 @@ Alias examples:
 alias gsAlfa="gitservice status /home/dries/Drive/Development/web/repos/AlfaPackages"
 alias gcAlfa="gitservice changes /home/dries/Drive/Development/web/repos/AlfaPackages"
 alias gpAlfa="gitservice pull /home/dries/Drive/Development/web/repos/AlfaPackages"
-
 ```
 
 ## Other directories
