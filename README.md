@@ -1,2 +1,2 @@
-# Slepinir-scripts
+# Sleipnir-scripts
 Personal bash scripts
