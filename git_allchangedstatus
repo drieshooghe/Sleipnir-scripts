@@ -21,8 +21,10 @@ fi
 for D in ${reporoot}/*; do
     if [[ -d "${D}" ]]; then
 	output=$(git --git-dir=${D}/.git --work-tree=${D} status);
+	if [[ ${output} == *"Changes"* ]]; then
 		echo -e "${BLCYAN} $(basename ${D}) ${RA}";
 		echo -e "${output}";
 		${N};
+	fi
     fi
 done
