@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Symbols
+    	SUCC="\e[32m\xE2\x9C\x94 \e[0m"
+    	ERR="\e[31m\xe2\x9c\x97 \e[0m"
+
+
+# Colors [Color comes after style, i.e. Bold (1) Light Cyan (96)]
+	GREEN="\e[32m"
+	LGREEN="\e[92m"
+	YELL="\e[33m"
+	LYELL="\e[93m"
+	RED="\e[31m"
+	LRED="\e[91m"
+	BLUE="\e[34m"
+	LBLUE="\e[94m"
+	CYAN="\e[36m"
+	LCYAN="\e[96m"
+	BLCYAN="\e[1;96m"
+	MAGEN="\e[35m"
+	LMAGEN="\e[95m"
+	LGREY="\e[37m"
+	DGREY="\e[90m"
+
+	
+
+# Remove all attributes
+        RA="\e[0m"
+
+# New line
+    	N="echo"

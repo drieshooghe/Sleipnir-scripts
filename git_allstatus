@@ -1,0 +1,30 @@
+#!/bin/bash
+cd $(dirname "$0");
+
+### INCLUDE SOURCES ###
+source "$(dirname "$0")/src/load_sources" && load_sources;
+
+### SET VARIABLES ###
+
+	# Parameters
+	     repo="$1"
+	# Directories
+	     root="/home/dries/Drive/Development/web/repos"
+	     reporoot="${root}/${repo}"
+
+### PARAMETER CHECK ###
+if [[ ! -d "${reporoot}" ]]; then
+        echo -e " ${ERR} An error occurred: please pass a valid directory containing repositories as a parameter" && exit;
+fi
+
+### ENTER REPOROOT AND CHECK EACH REPO STATUS
+for D in ${reporoot}/*; do
+    if [[ -d "${D}" ]]; then
+	output=$(git --git-dir=${D}/.git --work-tree=${D} status);
+	if [[ ! ${output} == *"Your branch is up-to-date"* ]]; then
+		echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+		echo -e "${output}";
+		${N};
+	fi
+    fi
+done

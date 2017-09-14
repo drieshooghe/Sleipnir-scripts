@@ -1,0 +1,18 @@
+#!/bin/bash
+
+load_sources () {
+
+echo "";
+
+for f in $(dirname "$0")/src/_*; do 
+
+	if source $f; then
+		echo -e "\033[0;32m Successfully loaded $f \e[0m" && sleep 0.5;
+	else
+		echo -e "\e[31m\xe2\x9c\x97 \e[0m Error: could not collect $f. Aborting script." && exit;
+	fi
+	echo "";
+
+done
+
+}

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+onsucc () {
+
+	echo -e ${SUCC} $1 && exit;
+
+}
+
+onfail () {
+
+	echo -e ${ERR} $1 && exit;	
+	
+}

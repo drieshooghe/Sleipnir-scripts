@@ -1,0 +1,34 @@
+#!/bin/bash
+cd $(dirname "$0");
+
+# Load sources
+source "$(dirname "$0")/src/load_sources" && load_sources
+
+# Print welcome message
+echo "$(<$(dirname "$0")/txt/sleipnir_welcome.txt)";
+
+echo "";
+
+# Perform updates
+while true; do
+	echo "" &&\
+	read -p "Do you wish to start updates? (y/n)" yn
+	case $yn in
+		[Yy]* )	if sudo apt-get update >/dev/null; then 
+				echo -e "\n ${SUCC} Succesfully updated list of available packages" && echo "";
+			else 
+				echo -e "\n ${ERR} Couldn't update list of available packages" && echo ""; 
+			fi &&\
+
+			if sudo apt-get dist-upgrade >/dev/null; then 
+				echo -e "\n ${SUCC} Succesfully upgraded packages" && echo ""; 
+			else 
+				echo -e "\n ${ERR} Error: couldn't upgrade packages" && echo "";
+			fi;
+			break;;
+		[Nn]* ) echo "As you wish" && exit;;
+	esac
+done
+
+# Clear screen
+sleep 3 && clear;
