@@ -1,0 +1,50 @@
+#!/bin/bash
+cd $(dirname "$0");
+
+### INCLUDE SOURCES ###
+source "$(dirname "$0")/src/load_sources" && load_sources;
+
+### SET VARIABLES ###
+
+	# Parameters
+	     action="$1"
+	     path="$2"
+
+### PARAMETER CHECK ###
+if [ "${action}" != "status" ] && [ "${action}" != "pull" ] && [ "${action}" != "changes" ]; then
+        echo -e " ${ERR} An error occurred: please provide a valid action" && exit;
+fi
+
+if [[ ! -d "${path}" ]]; then
+        echo -e " ${ERR} An error occurred: please provide a valid directory containing repositories as a parameter" && exit;
+fi
+
+
+
+### ENTER REPOROOT AND CHECK EACH REPO STATUS
+if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
+
+	for D in ${path}/*; do
+	    if [[ -d "${D}" ]]; then
+	        output=$(git --git-dir=${D}/.git --work-tree=${D} ${action});
+	        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+	        echo -e "${output}";
+	        ${N};
+	    fi
+	done
+
+fi
+if [[ "${action}" = "changes" ]]; then
+
+        for D in ${path}/*; do
+            if [[ -d "${D}" ]]; then
+		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
+		if [[ ${output} == *"Untracked files"* ]]; then
+			echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+			echo -e "${output}";
+			${N};
+		fi
+            fi
+        done
+
+fi
