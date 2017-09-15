@@ -9,9 +9,11 @@ source "$(dirname "$0")/src/load_sources" && load_sources;
 	# Parameters
 	     action="$1"
 	     path="$2"
+	     author="$3"
+	     date="$4"
 
 ### PARAMETER CHECK ###
-if [ "${action}" != "status" ] && [ "${action}" != "pull" ] && [ "${action}" != "changes" ]; then
+if [ "${action}" != "status" ] && [ "${action}" != "pull" ] && [ "${action}" != "changes" ] && [ "${action}" != "log-since" ] && [ "${action}" != "log-on" ]; then
         echo -e " ${ERR} An error occurred: please provide a valid action" && exit;
 fi
 
@@ -51,17 +53,53 @@ if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 	done
 
 fi
-if [[ "${action}" = "changes" ]]; then
+if [[ "${action}" = "pull" ]]; then
 
         for D in ${path}/*; do
             if [[ -d "${D}" ]]; then
-		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
+		output=$(git --git-dir=${D}/.git --work-tree=${D} ${action});
 		if [[ ${output} == *"Changes"* ]]; then
 			echo -e "${BLCYAN} $(basename ${D}) ${RA}";
 			echo -e "${output}";
-			${N};
 		fi
             fi
+
+        done
+
+fi
+
+if [[ "${action}" = "log-since" ]]; then
+
+	if [ -z ${date} ]; then
+		date=$(date -dlast-monday +%Y-%m-%d);
+	fi
+
+        for D in ${path}/*; do
+            if [[ -d "${D}" ]]; then
+                output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:"%ad:%B" --date=short --reverse --all --after="${date}" --author=${author});
+                        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+                        echo -e "${output}";
+                        ${N};
+            fi
+	    ${N}
+        done
+
+fi
+
+if [[ "${action}" = "log-on" ]]; then
+
+        if [ -z ${date} ]; then
+                date=$(date +%Y-%m-%d);
+        fi
+
+        for D in ${path}/*; do
+            if [[ -d "${D}" ]]; then
+                output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:"%ad:%B" --date=short --reverse --all --after="${date} 00:00" --before="${date} 23:59"  --author=${author});
+                        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+                        echo -e "${output}";
+                        ${N};
+            fi
+            ${N}
         done
 
 fi
