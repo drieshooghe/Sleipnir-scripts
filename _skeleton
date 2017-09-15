@@ -1,5 +1,7 @@
 #!/bin/bash
-cd $(dirname "$0");
+
+# Go to the script directory
+	cd $(dirname "$0");
 
 # Load sources
-source "$(dirname "$0")/src/load_sources" && load_sources
+	source "$(dirname "$0")/src/load_sources" && load_sources
