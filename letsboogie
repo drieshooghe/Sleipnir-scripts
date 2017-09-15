@@ -14,6 +14,6 @@
 
 # Show if pulls are required to start working
 	echo '${LBLUE} DASMEDIA repositories ${RA}'
-	gitservice status /home/dries/Drive/Development/web/repos/dasmedia
+	gitservice changes /home/dries/Drive/Development/web/repos/dasmedia
 	echo '${LBLUE} DRIESHOOGHE repositories ${RA}'
-	gitservice status /home/dries/Drive/Development/web/repos/drieshooghe
+	gitservice changes /home/dries/Drive/Development/web/repos/drieshooghe
