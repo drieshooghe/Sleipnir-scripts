@@ -76,7 +76,7 @@ if [[ "${action}" = "log-since" ]]; then
 
         for D in ${path}/*; do
             if [[ -d "${D}" ]]; then
-                output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:"%ad:%B" --date=short --reverse --all --after="${date}" --author=${author});
+                output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date}" --author=${author});
                         echo -e "${BLCYAN} $(basename ${D}) ${RA}";
                         echo -e "${output}";
                         ${N};
@@ -94,7 +94,7 @@ if [[ "${action}" = "log-on" ]]; then
 
         for D in ${path}/*; do
             if [[ -d "${D}" ]]; then
-                output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:"%ad:%B" --date=short --reverse --all --after="${date} 00:00" --before="${date} 23:59"  --author=${author});
+                output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date} 00:00" --before="${date} 23:59"  --author=${author});
                         echo -e "${BLCYAN} $(basename ${D}) ${RA}";
                         echo -e "${output}";
                         ${N};
