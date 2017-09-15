@@ -25,10 +25,27 @@ fi
 if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 
 	for D in ${path}/*; do
+
 	    if [[ -d "${D}" ]]; then
+
 	        output=$(git --git-dir=${D}/.git --work-tree=${D} ${action});
+
 	        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
-	        echo -e "${output}";
+
+		if [[ ${output} == *"Your branch is ahead of"* ]]; then
+
+	        	echo -e "${LGREEN} ${output} ${RA}";
+
+		elif [[ ${output} == *"Your branch is behind"* ]];then
+
+			echo -e "${RED} ${output} ${RA}"
+
+		else
+
+			echo -e "${output}";
+
+		fi
+
 	        ${N};
 	    fi
 	done
@@ -39,7 +56,7 @@ if [[ "${action}" = "changes" ]]; then
         for D in ${path}/*; do
             if [[ -d "${D}" ]]; then
 		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
-		if [[ ${output} == *"Untracked files"* ]]; then
+		if [[ ${output} == *"Changes"* ]]; then
 			echo -e "${BLCYAN} $(basename ${D}) ${RA}";
 			echo -e "${output}";
 			${N};
