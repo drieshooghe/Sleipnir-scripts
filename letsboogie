@@ -1,0 +1,19 @@
+#!/bin/bash
+# Go to the script directory
+	cd $(dirname "$0");
+
+# Load sources
+	source "$(dirname "$0")/src/load_sources" && load_sources
+
+# Go to the Vagrant folder and launch the container
+	cd /home/dries/.Vagrant
+	vagrant up
+
+# Launch phpStorm (as seperate process)
+	pstorm &
+
+# Show if pulls are required to start working
+	echo '${LBLUE} DASMEDIA repositories ${RA}'
+	gitservice status /home/dries/Drive/Development/web/repos/dasmedia
+	echo '${LBLUE} DRIESHOOGHE repositories ${RA}'
+	gitservice status /home/dries/Drive/Development/web/repos/drieshooghe
