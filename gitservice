@@ -53,11 +53,11 @@ if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 	done
 
 fi
-if [[ "${action}" = "pull" ]]; then
+if [[ "${action}" = "changes" ]]; then
 
         for D in ${path}/*; do
             if [[ -d "${D}" ]]; then
-		output=$(git --git-dir=${D}/.git --work-tree=${D} ${action});
+		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
 		if [[ ${output} == *"Changes"* ]]; then
 			echo -e "${BLCYAN} $(basename ${D}) ${RA}";
 			echo -e "${output}";
