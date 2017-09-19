@@ -28,7 +28,7 @@ if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 
 	for D in ${path}/*; do
 
-	    if [[ -d "${D}" ]]; then
+	    if [[ -d "${D}" && -d "${D}/.git" ]]; then
 
 	        output=$(git --git-dir=${D}/.git --work-tree=${D} ${action});
 
