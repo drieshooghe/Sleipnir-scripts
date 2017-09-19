@@ -56,7 +56,7 @@ fi
 if [[ "${action}" = "changes" ]]; then
 
         for D in ${path}/*; do
-            if [[ -d "${D}" ]]; then
+            if [[ -d "${D}" && -d "${D}/.git" ]]; then
 		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
 		if [[ ${output} == *"Changes"* ]]; then
 			echo -e "${BLCYAN} $(basename ${D}) ${RA}";
@@ -75,13 +75,14 @@ if [[ "${action}" = "log-since" ]]; then
 	fi
 
         for D in ${path}/*; do
-            if [[ -d "${D}" ]]; then
+            if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date}" --author=${author});
-                        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
-                        echo -e "${output}";
-                        ${N};
+			if [[ ! -z ${output}  ]]; then
+	                        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+	                        echo -e "${output}";
+	                        ${N};
+			fi
             fi
-	    ${N}
         done
 
 fi
@@ -93,13 +94,14 @@ if [[ "${action}" = "log-on" ]]; then
         fi
 
         for D in ${path}/*; do
-            if [[ -d "${D}" ]]; then
+            if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date} 00:00" --before="${date} 23:59"  --author=${author});
-                        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
-                        echo -e "${output}";
-                        ${N};
+                        if [[ ! -z ${output}  ]]; then
+				echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+	                        echo -e "${output}";
+	                        ${N};
+			fi
             fi
-            ${N}
         done
 
 fi
