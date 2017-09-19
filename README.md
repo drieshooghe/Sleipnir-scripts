@@ -4,7 +4,7 @@ Useful bash scripts for personal use
 
 ### Good to know
 
-You don't have to be a Shell Fu master to use these scripts, nevertheless, a certain insight of the command line might come in handy. Especially when adding these scripts to your path and/or making aliases to excecute them.
+You don't have to be a black belt in Shell Fu to use these scripts, nevertheless, a certain insight of the command line might come in handy. Especially when adding these scripts to your path and/or making aliases to execute them.
 
 ## Installing
 
@@ -25,11 +25,13 @@ pantheon-terminal -e "/bin/zsh -c 'onboot'"
 
 ### gitservice
 Useful for working with your own repositories in a project.
-Takes an **action**:
-⋅⋅* status: show the status of every repository, regardless
+
+⋅⋅* status: show the status of every repository
 ⋅⋅* changes: show the status of repositories that have uncommitted changes
 ⋅⋅* pull: pulls every repository
-and a **path**
+
+
+
 
 Alias examples:
 ```
