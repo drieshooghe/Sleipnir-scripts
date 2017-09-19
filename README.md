@@ -25,19 +25,25 @@ pantheon-terminal -e "/bin/zsh -c 'onboot'"
 
 ### gitservice
 Useful for working with your own repositories in a project.
-
-⋅⋅* status: show the status of every repository
-⋅⋅* changes: show the status of repositories that have uncommitted changes
-⋅⋅* pull: pulls every repository
-
-
-
+#### Take an action and a parameter
+* status: show the status of every repository
+* changes: show the status of repositories that have uncommitted changes
+* pull: pulls every repository
+#### Take additional parameters
+* log-on: shows the commit history of every repository in a directory on a certain day
+takes an author and an optional date [YYYY-MM-DD]
+if the date is left blank the current date is used
+* log-since: shows the commit history of every repository since a certain day
+takes an author and an optional date [YYYY-MM-DD]
+if the date is left blank, the date of the most recent monday is used
 
 Alias examples:
 ```
 alias gsAlfa="gitservice status /home/dries/Drive/Development/web/repos/AlfaPackages"
 alias gcAlfa="gitservice changes /home/dries/Drive/Development/web/repos/AlfaPackages"
 alias gpAlfa="gitservice pull /home/dries/Drive/Development/web/repos/AlfaPackages"
+alias gloBeta="gitservice log-on /home/dries/Drive/Development/web/Beta Dries"
+alias glsBeta="gitservice log-since /home/dries/Drive/Development/web/Beta Dries [2017-09-19]"
 ```
 
 ## Other directories
