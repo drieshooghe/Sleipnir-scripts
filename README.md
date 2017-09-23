@@ -48,6 +48,17 @@ alias gloBeta="gitservice log-on /home/dries/Drive/Development/web/Beta Dries"
 alias glsBeta="gitservice log-since /home/dries/Drive/Development/web/Beta Dries [2017-09-19]"
 ```
 
+### aliases
+Aliases that are stored in src/cnf_aliases are automatically sources into bash/zsh.
+When using a lot of aliases they can become hard to remember.
+This function displays the aliases by given category.
+
+```
+aliases cat //gives all alias categories
+aliases web //gives the aliases under the web category
+```
+
+
 ## Other directories
 
 ## src
