@@ -8,10 +8,9 @@ echo "**************************************************************************
 for f in $SCRIPTDIR/src/_*; do
 	
 	if source $f; then
-		echo -ne "* \033[0;32m Successfully loaded ${f#$SCRIPTDIR/src/_} ${ra}" &&
-		sleep 0.5;
+		printf "*  Successfully loaded \033[92m ${f#$SCRIPTDIR/src/_} \033[0m";
 	else
-		echo -ne "* \e[31m\xe2\x9c\x97 \e[0m Error: could not collect ${f#$SCRIPTDIR/src/_}. Aborting script." && exit;
+		printf "*  Error: could not collect \033[31m ${f#$SCRIPTDIR/src/_}\033[0m. Aborting script." && exit;
 	fi
 	echo "";
 

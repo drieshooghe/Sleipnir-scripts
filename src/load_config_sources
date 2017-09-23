@@ -5,21 +5,21 @@
 load_config_sources () {
 
 echo "";
-echo "****************************************************************************";
 
 for f in $SCRIPTDIR/src/cnf_*; do
 	
 	if source $f; then
-		echo -ne "* \033[0;32m Successfully loaded ${f#${SCRIPTDIR}/src/cnf_} \033[0m" &&
-		sleep 0.5;
+		printf " Successfully loaded \033[92m ${f#${SCRIPTDIR}/src/cnf_} \033[0m";
 	else
-		echo -ne "* \e[31m\xe2\x9c\x97 \e[0m Error: could not collect $f. Aborting script." && exit;
+		printf " Error: could not collect \033[31m ${f#${SCRIPTDIR}/src/cnf_} \033[0m. Aborting script." && exit;
 	fi
 	echo "";
 
 done;
 
-echo "****************************************************************************";
+sleep 1;
+clear;
+
 echo '';
 
 }

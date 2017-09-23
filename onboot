@@ -5,55 +5,89 @@ source "$SCRIPTDIR/src/load_script_sources" && load_script_sources
 
 # Print welcome message
 echo "$(<$SCRIPTDIR/txt/sleipnir_welcome.txt)";
-
 echo "";
 
 # Perform updates
 while true; do
-	echo "" &&\
-	read -p "Do you wish to start updates? (y/n)" yn
+
+	echo ""
+	read -t 5 -p "Do you wish to start updates? (y/n) [skipped in 5 seconds]" yn
+
 	case $yn in
-		[Yy]* )	if sudo apt-get update >/dev/null; then 
-				echo -e "\n ${succ} Succesfully updated list of available packages" && echo "";
-			else 
-				echo -e "\n ${err} Couldn't update list of available packages" && echo ""; 
-			fi
-			break;;
-		[Nn]* ) echo "As you wish" && break;;
+
+		[Yy]* )	if sudo apt-get update >/dev/null; then
+				    echo -e "${succ} Succesfully updated list of available packages" && echo "";
+			    else
+				    echo -e "${err} Couldn't update list of available packages" && echo "";
+			    fi
+			    break;;
+
+		[Nn]* ) echo -e "\n As you wish. Updates skipped." && break;;
+
+		"")     echo -e "\n Updates skipped." && break;;
+
 	esac
 done
 
 # Perform upgrades
+
 while true; do
-        echo "" &&\
-        read -p "Do you wish to check for and perform dist-upgrades? (y/n)" yn
+
+        echo ""
+        read -t 5 -p "Do you wish to check for and perform dist-upgrades? (y/n) [skipped in 5 seconds]" yn
+        spinner
         case $yn in
+
                 [Yy]* ) if sudo apt-get dist-upgrade; then
-                                echo -e "\n ${succ} Succesfully upgraded packages" && echo "";
+
+                                echo -e "${succ} Succesfully upgraded packages" && echo "";
+
                         else
-                                echo -e "\n ${err} Error: couldn't upgrade packages" && echo "";
+
+                                echo -e "${err} Error: couldn't upgrade packages" && echo "";
+
                         fi;
+
                         break;;
-                [Nn]* ) echo "As you wish" && break;;
+
+                [Nn]* ) echo -e "\n As you wish. Upgrades skipped." && break;;
+
+                "") echo -e "\n Upgrades skipped." && break;;
+
         esac
 done
+
 
 # Clean boot
 # Perform updates
 while true; do
-        echo "" &&\
-        read -p "Do you wish to remove old kernels? (y/n)" yn
+
+        echo ""
+        read -t 5 -p "Do you wish to remove old kernels? (y/n) [skipped in 5 seconds]" yn
+
         case $yn in
+
                 [Yy]* ) if sudo apt-get autoremove --purge; then
-                                echo -e "\n ${succ} Succesfully purged old kernels" && echo "";
+
+                                echo -e "${succ} Succesfully purged old kernels" && echo "";
+
                         else
-                                echo -e "\n ${err} Error: couldn't purge old kernels" && echo "";
+
+                                echo -e "${err} Error: couldn't purge old kernels" && echo "";
+
                         fi;
+
                         break;;
-                [Nn]* ) echo "Probably a smart move" && break;;
+
+                [Nn]* ) echo -e "\n Probably a smart move." && break;;
+
+                "") echo -e "\n Probably a smart move." && break;;
+
         esac
 done
 
 
+
 # Clear screen
-sleep 3 && clear;
+sleep 2;
+clear;

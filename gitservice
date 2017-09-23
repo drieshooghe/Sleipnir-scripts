@@ -23,8 +23,6 @@ fi
 
 
 ### ENTER REPOROOT AND CHECK EACH REPO STATUS
-
-
 if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 
 	for D in ${path}/*; do
