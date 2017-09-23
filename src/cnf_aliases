@@ -4,9 +4,8 @@
 #          ALIASES          #
 #############################
 
-# ---------------------------
-#          GENERAL          #
-# ---------------------------
+
+### GENERAL ###
 
 # tools
 
@@ -15,9 +14,10 @@ alias showpath="echo “${PATH//:/$’\n’}”"
 alias ls="ls -l --color"
 alias lsa="ls -al --color"
 
-# ---------------------------
-#            WEB            #
-# ---------------------------
+## end
+
+
+### WEB ###
 
 # tools
 alias entrDkr='docker exec -it local_web_1 bash'
@@ -40,9 +40,10 @@ alias gcl='git clone'
 alias gta='git tag -a -m'
 alias gf='git reflog'
 
-# ---------------------------
-#          MOBILITY         #
-# ---------------------------
+## end
+
+
+### MOBILITY ###
 
 # tools
 alias ..="cd .."
@@ -87,9 +88,10 @@ alias cdscripts="cd /home/dries/Drive/Development/scripts"
 alias cdconf="cd /home/dries/Drive/Development/configs"
 alias cdlog="cd /home/dries/Drive/Development/logs"
 
-# ---------------------------
-#          SCRIPTS          #
-# ---------------------------
+## end
+
+
+### SCRIPTS ###
 
 # git
 alias gsdas="gitservice status /home/dries/Drive/Development/web/repos/dasmedia"
@@ -107,3 +109,5 @@ alias gloweb="gitservice log-on /home/dries/Drive/Development/web Dries"
 alias glsdas="gitservice log-since /home/dries/Drive/Development/web/repos/dasmedia Dries"
 alias glsdries="gitservice log-since /home/dries/Drive/Development/web/repos/drieshooghe Dries"
 alias glsweb="gitservice log-since /home/dries/Drive/Development/web Dries"
+
+## end

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Load sources
+source "$SCRIPTDIR/src/load_script_sources" && load_script_sources
+
+### SET VARIABLES ###
+	# Parameters
+	     section="$1"
+	     upper=${section^^}
+	     file=$SCRIPTDIR/src/cnf_aliases
+
+### DETERMINE SECTION ###
+case "$1" in
+        cat)
+            sed -n 's:.*###\(.*\)###.*:\1:p' ${file}
+            ;;
+        *)
+            sed -n "/### ${upper} ###/,/## end/p" ${file}
+            ;;
+
+esac
+
+
