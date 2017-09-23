@@ -8,11 +8,12 @@ You don't have to be a black belt in Shell Fu to use these scripts, nevertheless
 
 ## Installing
 
-You can pull these scripts to wherever you like. To use the scripts from any location, simply add this freshly created directory to your $PATH. Some scripts (for instance for loading aliases) require this directory's path to be stored as a variable $SCRIPTDIR in your zshrc or bashrc for easy access.
+You can pull these scripts to wherever you like. Some scripts (for instance for loading aliases) require this directory's path to be stored as a variable $SCRIPTDIR in your zshrc or bashrc for easy access.
+To use the scripts from any location, simply add this freshly created directory's path to your $PATH. 
 
 ```
 export SCRIPTDIR=$HOME/where/you/put/the/scripts
-export PATH=/where/you/put/the/scripts:$PATH or simply export PATH=$SCRIPTDIR:$PATH
+export PATH=$SCRIPTDIR:$PATH
 ```
 
 ## Scripts
