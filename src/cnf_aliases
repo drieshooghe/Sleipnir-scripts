@@ -1,0 +1,109 @@
+#!/bin/bash
+
+#############################
+#          ALIASES          #
+#############################
+
+# ---------------------------
+#          GENERAL          #
+# ---------------------------
+
+# tools
+
+alias zshconf="vim ~/.zshrc"
+alias showpath="echo “${PATH//:/$’\n’}”"
+alias ls="ls -l --color"
+alias lsa="ls -al --color"
+
+# ---------------------------
+#            WEB            #
+# ---------------------------
+
+# tools
+alias entrDkr='docker exec -it local_web_1 bash'
+alias entrVgr="/home/dries/.Vagrant/vagrant ssh"
+
+# git
+alias ga='git add'
+alias gp='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gcl='git clone'
+alias gta='git tag -a -m'
+alias gf='git reflog'
+
+# ---------------------------
+#          MOBILITY         #
+# ---------------------------
+
+# tools
+alias ..="cd .."
+alias dep="php vendor/bin/dep"
+alias setlarper="sudo chgrp -R www-data storage bootstrap/cache && sudo chmod -R ug+rwx storage bootstrap/cache"
+
+# local ssh
+
+alias entrvgr="cd /home/dries/.Vagrant && vagrant ssh"
+alias entrdkr="docker exec -it local_web_1 bash"
+alias entrmidgard="ssh -p 23023 dries@192.168.0.10"
+alias entryggdrasil="ssh -p 23022 dries@192.168.0.11"
+
+# remote ssh
+
+alias travelutgard="ssh dries@82.196.7.87"
+alias travelmidgard="ssh -p 23023 dries@141.134.240.78"
+alias travelyggdrasil="ssh -p 23022 dries@141.134.240.78"
+
+# web directories
+
+alias cdweb="cd /home/dries/Drive/Development/web"
+alias cdlux="cd /home/dries/Drive/Development/web/luxauto"
+alias cdlardef="cd /home/dries/Drive/Development/web/laravel-default"
+alias cddh="cd /home/dries/Drive/Development/web/drieshooghe"
+alias cdrep="cd /home/dries/Drive/Development/web/repos"
+alias cdrepdas="cd /home/dries/Drive/Development/web/repos/dasmedia"
+alias cdrepdries="cd /home/dries/Drive/Development/web/repos/drieshooghe"
+
+# tool directories
+
+alias cddkr="cd /home/dries/.Docker"
+alias cddkrc="cd /home/dries/.Docker/docker-compose"
+alias cdvgr="/home/dries/.Vagrant"
+
+# script directories
+
+alias cdscripts="cd /home/dries/Drive/Development/scripts"
+
+# development directories
+
+alias cdconf="cd /home/dries/Drive/Development/configs"
+alias cdlog="cd /home/dries/Drive/Development/logs"
+
+# ---------------------------
+#          SCRIPTS          #
+# ---------------------------
+
+# git
+alias gsdas="gitservice status /home/dries/Drive/Development/web/repos/dasmedia"
+alias gsdries="gitservice status /home/dries/Drive/Development/web/repos/drieshooghe"
+alias gsweb="gitservice status /home/dries/Drive/Development/web"
+alias gcdas="gitservice changes /home/dries/Drive/Development/web/repos/dasmedia"
+alias gcdries="gitservice changes /home/dries/Drive/Development/web/repos/drieshooghe"
+alias gcweb="gitservice changes /home/dries/Drive/Development/web"
+alias gpdas="gitservice pull /home/dries/Drive/Development/web/repos/dasmedia"
+alias gpdries="gitservice pull /home/dries/Drive/Development/web/repos/drieshooghe"
+alias gpweb="gitservice pull /home/dries/Drive/Development/web"
+alias glodas="gitservice log-on /home/dries/Drive/Development/web/repos/dasmedia Dries"
+alias glodries="gitservice log-on /home/dries/Drive/Development/web/repos/drieshooghe Dries"
+alias gloweb="gitservice log-on /home/dries/Drive/Development/web Dries"
+alias glsdas="gitservice log-since /home/dries/Drive/Development/web/repos/dasmedia Dries"
+alias glsdries="gitservice log-since /home/dries/Drive/Development/web/repos/drieshooghe Dries"
+alias glsweb="gitservice log-since /home/dries/Drive/Development/web Dries"

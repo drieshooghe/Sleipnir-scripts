@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#############################
+#         FUNCTIONS         #
+#############################
+
+# Connect through ssh to dasmedia web001
+# function checks if public key is already authorized on server, if not it will
+# be dynamically added
+# usage: web001 <username>
+# e.g.: web001 dasmedia
+web001() {
+    KEY=""
+    for line in $(cat ~/.ssh/id_rsa.pub)
+    do
+        KEY="$KEY $line"
+    done
+    if ! ssh $1@dasmedia.be test -e ".ssh/authorized_keys"; then
+        ssh $1@dasmedia.be mkdir .ssh
+        ssh $1@dasmedia.be touch .ssh/authorized_keys
+    fi
+    ssh $1@dasmedia.be "grep -q '$KEY' .ssh/authorized_keys || echo '$KEY' >>.ssh/authorized_keys"
+    ssh $1@dasmedia.be
+}
+
+# Connect through ssh to dasmedia web002
+# usage: web002 <username>
+# e.g.: web002 dasmedia
+web002() {
+    ssh $1@web-002.dasmedia.openminds.be
+}

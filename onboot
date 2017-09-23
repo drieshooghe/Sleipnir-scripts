@@ -1,11 +1,10 @@
 #!/bin/bash
-cd $(dirname "$0");
 
 # Load sources
-source "$(dirname "$0")/src/load_sources" && load_sources
+source "$SCRIPTDIR/src/load_script_sources" && load_script_sources
 
 # Print welcome message
-echo "$(<$(dirname "$0")/txt/sleipnir_welcome.txt)";
+echo "$(<$SCRIPTDIR/txt/sleipnir_welcome.txt)";
 
 echo "";
 
@@ -20,7 +19,7 @@ while true; do
 				echo -e "\n ${err} Couldn't update list of available packages" && echo ""; 
 			fi
 			break;;
-		[Nn]* ) echo "As you wish" && exit;;
+		[Nn]* ) echo "As you wish" && break;;
 	esac
 done
 
@@ -35,7 +34,7 @@ while true; do
                                 echo -e "\n ${err} Error: couldn't upgrade packages" && echo "";
                         fi;
                         break;;
-                [Nn]* ) echo "As you wish" && exit;;
+                [Nn]* ) echo "As you wish" && break;;
         esac
 done
 
@@ -51,7 +50,7 @@ while true; do
                                 echo -e "\n ${err} Error: couldn't purge old kernels" && echo "";
                         fi;
                         break;;
-                [Nn]* ) echo "Probably a smart move" && exit;;
+                [Nn]* ) echo "Probably a smart move" && break;;
         esac
 done
 

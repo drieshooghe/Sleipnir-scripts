@@ -1,14 +1,16 @@
 #!/bin/bash
 
-load_sources () {
+# For this script to work, the script directory must be added to the path
+
+load_config_sources () {
 
 echo "";
 echo "****************************************************************************";
 
-for f in $(dirname "$0")/src/_*; do 
+for f in $SCRIPTDIR/src/cnf_*; do
 	
 	if source $f; then
-		echo -ne "* \033[0;32m Successfully loaded $f ${ra}" &&
+		echo -ne "* \033[0;32m Successfully loaded ${f#${SCRIPTDIR}/src/cnf_} \033[0m" &&
 		sleep 0.5;
 	else
 		echo -ne "* \e[31m\xe2\x9c\x97 \e[0m Error: could not collect $f. Aborting script." && exit;
