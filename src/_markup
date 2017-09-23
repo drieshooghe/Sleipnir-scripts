@@ -1,34 +1,56 @@
 #!/bin/bash
 
-# Symbols
-    	SUCC="\e[32m\xE2\x9C\x94 \e[0m"
-    	ERR="\e[31m\xe2\x9c\x97 \e[0m"
+esc="\033"
 
+## Colors [Color comes after style, i.e. Bold (1) Light Cyan (96)]
+# fontcolors
+    black_f="${esc}[30m"
+    white_f="${esc}[37m"
+	green_f="${esc}[32m"
+	lgreen_f="${esc}[92m"
+	yellow_f="${esc}[33m"
+	lyellow_f="${esc}[93m"
+	red_f="${esc}[31m"
+	lred_f="${esc}[91m"
+	blue_f="${esc}[34m"
+	lblue_f="${esc}[94m"
+	cyan_f="${esc}[36m"
+	lcyan_f="${esc}[96m"
+	magenta_f="${esc}[35m"
+	lmagenta_f="${esc}[95m"
+	lgrey_f="${esc}[37m"
+	dgrey_f="${esc}[90m"
+	purple_f="${esc}[35m"
 
-# Colors [Color comes after style, i.e. Bold (1) Light Cyan (96)]
-	GREEN="\e[32m"
-	LGREEN="\e[92m"
-	YELL="\e[33m"
-	LYELL="\e[93m"
-	RED="\e[31m"
-	LRED="\e[91m"
-	BLUE="\e[34m"
-	LBLUE="\e[94m"
-	CYAN="\e[36m"
-	LCYAN="\e[96m"
-	BLCYAN="\e[1;96m"
-	MAGEN="\e[35m"
-	LMAGEN="\e[95m"
-	LGREY="\e[37m"
-	DGREY="\e[90m"
+# backgroundcolors
+    black_b="${esc}[40m"
+    yellow_b="${esc}[43m"
+    cyan_b="${esc}[46m"
+    red_b="${esc}[41m"
+    blue_b="${esc}[44m"
+    white_b="${esc}[47m"
+    green_b="${esc}[42m"
+    purple_b="${esc}[45m"
 
-	
+## Style
+    bold_on="${esc}[1m"
+    bold_off="${esc}[22m"
+    italic_on="${esc}[3m"
+    italic_off="${esc}[23m"
+    ul_on="${esc}[4m"
+    ul_off="${esc}[24m"
+    inv_on="${esc}[7m"
+    inv_off="${esc}[27m"
 
-# Remove all attributes
-        RA="\e[0m"
+## Remove attributes
+    ra="${esc}[0m"
 
-# New line
-    	N="echo"
+## New line
+    nl="echo"
 
-# Section marking
-	SECT="********************************************************"
+## Symbols
+    succ="${esc}[32m\xE2\x9C\x94 ${ra}"
+    err="${esc}[31m\xe2\x9c\x97 ${ra}"
+
+## Section marking
+	sec="********************************************************"

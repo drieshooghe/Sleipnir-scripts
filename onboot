@@ -15,9 +15,9 @@ while true; do
 	read -p "Do you wish to start updates? (y/n)" yn
 	case $yn in
 		[Yy]* )	if sudo apt-get update >/dev/null; then 
-				echo -e "\n ${SUCC} Succesfully updated list of available packages" && echo "";
+				echo -e "\n ${succ} Succesfully updated list of available packages" && echo "";
 			else 
-				echo -e "\n ${ERR} Couldn't update list of available packages" && echo ""; 
+				echo -e "\n ${err} Couldn't update list of available packages" && echo ""; 
 			fi
 			break;;
 		[Nn]* ) echo "As you wish" && exit;;
@@ -30,9 +30,9 @@ while true; do
         read -p "Do you wish to check for and perform dist-upgrades? (y/n)" yn
         case $yn in
                 [Yy]* ) if sudo apt-get dist-upgrade; then
-                                echo -e "\n ${SUCC} Succesfully upgraded packages" && echo "";
+                                echo -e "\n ${succ} Succesfully upgraded packages" && echo "";
                         else
-                                echo -e "\n ${ERR} Error: couldn't upgrade packages" && echo "";
+                                echo -e "\n ${err} Error: couldn't upgrade packages" && echo "";
                         fi;
                         break;;
                 [Nn]* ) echo "As you wish" && exit;;
@@ -46,9 +46,9 @@ while true; do
         read -p "Do you wish to remove old kernels? (y/n)" yn
         case $yn in
                 [Yy]* ) if sudo apt-get autoremove --purge; then
-                                echo -e "\n ${SUCC} Succesfully purged old kernels" && echo "";
+                                echo -e "\n ${succ} Succesfully purged old kernels" && echo "";
                         else
-                                echo -e "\n ${ERR} Error: couldn't purge old kernels" && echo "";
+                                echo -e "\n ${err} Error: couldn't purge old kernels" && echo "";
                         fi;
                         break;;
                 [Nn]* ) echo "Probably a smart move" && exit;;

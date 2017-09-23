@@ -13,7 +13,7 @@
 	pstorm &
 
 # Show if pulls are required to start working
-	echo -e '${LBLUE} DASMEDIA repositories ${RA}'
+	echo -e '${lblue_f} DASMEDIA repositories ${ra}'
 	gitservice changes /home/dries/Drive/Development/web/repos/dasmedia
-	echo -e '${LBLUE} DRIESHOOGHE repositories ${RA}'
+	echo -e '${lblue_f} DRIESHOOGHE repositories ${ra}'
 	gitservice changes /home/dries/Drive/Development/web/repos/drieshooghe

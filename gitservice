@@ -13,17 +13,19 @@ source "$(dirname "$0")/src/load_sources" && load_sources;
 	     date="$4"
 
 ### PARAMETER CHECK ###
-if [ "${action}" != "status" ] && [ "${action}" != "pull" ] && [ "${action}" != "changes" ] && [ "${action}" != "log-since" ] && [ "${action}" != "log-on" ]; then
-        echo -e " ${ERR} An error occurred: please provide a valid action" && exit;
+if [[ "${action}" != "status" ]] && [[ "${action}" != "pull" ]] && [[ "${action}" != "changes" ]] && [[ "${action}" != "log-since" ]] && [[ "${action}" != "log-on" ]]; then
+        echo -e " ${err} An error occurred: please provide a valid action" && exit;
 fi
 
 if [[ ! -d "${path}" ]]; then
-        echo -e " ${ERR} An error occurred: please provide a valid directory containing repositories as a parameter" && exit;
+        echo -e " ${err} An error occurred: please provide a valid directory containing repositories as a parameter" && exit;
 fi
 
 
 
 ### ENTER REPOROOT AND CHECK EACH REPO STATUS
+
+
 if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 
 	for D in ${path}/*; do
@@ -32,23 +34,27 @@ if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 
 	        output=$(git --git-dir=${D}/.git --work-tree=${D} ${action});
 
-	        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+	        echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
 
 		if [[ ${output} == *"Your branch is ahead of"* ]]; then
 
-	        	echo -e "${LGREEN} ${output} ${RA}";
+	        	echo -e "${lgreen_f} ${output} ${ra}";
 
 		elif [[ ${output} == *"Your branch is behind"* ]];then
 
-			echo -e "${RED} ${output} ${RA}"
+			echo -e "${red_f} ${output} ${ra}"
+
+		elif [[ ${output} == *"Changes"* ]]; then
+
+		        echo -e "${output}";
 
 		else
 
-			echo -e "${output}";
+			echo -e "${dgrey_f} ${output} ${ra}";
 
 		fi
 
-	        ${N};
+	        ${nl};
 	    fi
 	done
 
@@ -59,7 +65,7 @@ if [[ "${action}" = "changes" ]]; then
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
 		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
 		if [[ ${output} == *"Changes"* ]]; then
-			echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+			echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
 			echo -e "${output}";
 		fi
             fi
@@ -78,9 +84,9 @@ if [[ "${action}" = "log-since" ]]; then
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date}" --author=${author});
 			if [[ ! -z ${output}  ]]; then
-	                        echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+	                        echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
 	                        echo -e "${output}";
-	                        ${N};
+	                        ${nl};
 			fi
             fi
         done
@@ -97,9 +103,9 @@ if [[ "${action}" = "log-on" ]]; then
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date} 00:00" --before="${date} 23:59"  --author=${author});
                         if [[ ! -z ${output}  ]]; then
-				echo -e "${BLCYAN} $(basename ${D}) ${RA}";
+				echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
 	                        echo -e "${output}";
-	                        ${N};
+	                        ${nl};
 			fi
             fi
         done

@@ -8,7 +8,7 @@ echo "**************************************************************************
 for f in $(dirname "$0")/src/_*; do 
 	
 	if source $f; then
-		echo -ne "* \033[0;32m Successfully loaded $f ${RA}" &&
+		echo -ne "* \033[0;32m Successfully loaded $f ${ra}" &&
 		sleep 0.5;
 	else
 		echo -ne "* \e[31m\xe2\x9c\x97 \e[0m Error: could not collect $f. Aborting script." && exit;
