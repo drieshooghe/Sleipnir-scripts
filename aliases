@@ -7,9 +7,9 @@ source "$SCRIPTDIR/src/load_script_sources" && load_script_sources
 	# Parameters
 	     section="$1"
 	     upper=${section^^}
-	     file=$SCRIPTDIR/src/cnf_aliases
+	     file=${SCRIPTDIR}/src/cnf_aliases
 
-### DETERMINE SECTION ###
+### DETERMINE ACTION/SECTION ###
 case "$1" in
         cat)
             sed -n 's:.*###\(.*\)###.*:\1:p' ${file}

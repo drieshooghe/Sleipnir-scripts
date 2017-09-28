@@ -31,7 +31,7 @@ if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 
 	        output=$(git --git-dir=${D}/.git --work-tree=${D} ${action});
 
-	        echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
+	        echo -e "${bold_on}${lblue_f}${dbarrow}${lcyan_f} $(basename ${D}) ${ra}";
 
 		if [[ ${output} == *"Your branch is ahead of"* ]]; then
 
@@ -62,7 +62,7 @@ if [[ "${action}" = "changes" ]]; then
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
 		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
 		if [[ ${output} == *"Changes"* ]]; then
-			echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
+			echo -e "${bold_on}${lblue_f}${dbarrow}${lcyan_f} $(basename ${D}) ${ra}";
 			echo -e "${output}";
 		fi
             fi
@@ -81,7 +81,7 @@ if [[ "${action}" = "log-since" ]]; then
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date}" --author=${author});
 			if [[ ! -z ${output}  ]]; then
-	                        echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
+	                        echo -e "${bold_on}${lblue_f}${dbarrow}${lcyan_f} $(basename ${D}) ${ra}";
 	                        echo -e "${output}";
 	                        ${nl};
 			fi
@@ -100,7 +100,7 @@ if [[ "${action}" = "log-on" ]]; then
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date} 00:00" --before="${date} 23:59"  --author=${author});
                         if [[ ! -z ${output}  ]]; then
-				echo -e "${boldon}${lcyan_f} $(basename ${D}) ${ra}";
+				echo -e "${bold_on}${lblue_f}${dbarrow}${lcyan_f} $(basename ${D}) ${ra}";
 	                        echo -e "${output}";
 	                        ${nl};
 			fi

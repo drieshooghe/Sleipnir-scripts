@@ -51,6 +51,7 @@ esc="\033"
 ## Symbols
     succ="${esc}[32m\xE2\x9C\x94 ${ra}"
     err="${esc}[31m\xe2\x9c\x97 ${ra}"
+    dbarrow="\u00BB"
 
 ## Section marking
 	sec="********************************************************"
