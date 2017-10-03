@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ### INCLUDE SOURCES ###
 source "$SCRIPTDIR/src/load_script_sources" && load_script_sources;
@@ -7,7 +7,7 @@ source "$SCRIPTDIR/src/load_script_sources" && load_script_sources;
 
 	# Parameters
 	     action="$1"
-	     path="$2"
+	     repopath="$2"
 	     author="$3"
 	     date="$4"
 
@@ -16,7 +16,7 @@ if [[ "${action}" != "status" ]] && [[ "${action}" != "pull" ]] && [[ "${action}
         echo -e " ${err} An error occurred: please provide a valid action" && exit;
 fi
 
-if [[ ! -d "${path}" ]]; then
+if [[ ! -d "${repopath}" ]]; then
         echo -e " ${err} An error occurred: please provide a valid directory containing repositories as a parameter" && exit;
 fi
 
@@ -25,7 +25,7 @@ fi
 ### ENTER REPOROOT AND CHECK EACH REPO STATUS
 if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 
-	for D in ${path}/*; do
+	for D in ${repopath}/*; do
 
 	    if [[ -d "${D}" && -d "${D}/.git" ]]; then
 
@@ -58,7 +58,7 @@ if [[ "${action}" = "status" ]] || [[ "${action}" = "pull" ]]; then
 fi
 if [[ "${action}" = "changes" ]]; then
 
-        for D in ${path}/*; do
+        for D in ${repopath}/*; do
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
 		output=$(git --git-dir=${D}/.git --work-tree=${D} status);
 		if [[ ${output} == *"Changes"* ]]; then
@@ -77,7 +77,7 @@ if [[ "${action}" = "log-since" ]]; then
 		date=$(date -dlast-monday +%Y-%m-%d);
 	fi
 
-        for D in ${path}/*; do
+        for D in ${repopath}/*; do
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date}" --author=${author});
 			if [[ ! -z ${output}  ]]; then
@@ -96,7 +96,7 @@ if [[ "${action}" = "log-on" ]]; then
                 date=$(date +%Y-%m-%d);
         fi
 
-        for D in ${path}/*; do
+        for D in ${repopath}/*; do
             if [[ -d "${D}" && -d "${D}/.git" ]]; then
                 output=$(git --git-dir=${D}/.git --work-tree=${D} log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --after="${date} 00:00" --before="${date} 23:59"  --author=${author});
                         if [[ ! -z ${output}  ]]; then
