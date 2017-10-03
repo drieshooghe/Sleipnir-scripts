@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Load sources
 source "$SCRIPTDIR/src/load_script_sources" && load_script_sources

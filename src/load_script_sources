@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 load_script_sources () {
 

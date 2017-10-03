@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Load sources
 	source "$SCRIPTDIR/src/load_script_sources" && load_script_sources
@@ -11,7 +11,7 @@
 	pstorm &
 
 # Show if pulls are required to start working
-	echo -e '${lblue_f} DASMEDIA repositories ${ra}'
 	gitservice changes /home/dries/Drive/Development/web/repos/dasmedia
-	echo -e '${lblue_f} DRIESHOOGHE repositories ${ra}'
+	echo -e '${lblue_f} DASMEDIA repositories ${ra}'
 	gitservice changes /home/dries/Drive/Development/web/repos/drieshooghe
+	echo -e '${lblue_f} DRIESHOOGHE repositories ${ra}'

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 esc="\033"
 
@@ -51,7 +51,7 @@ esc="\033"
 ## Symbols
     succ="${esc}[32m\xE2\x9C\x94 ${ra}"
     err="${esc}[31m\xe2\x9c\x97 ${ra}"
-    dbarrow="\u00BB"
+    dbarrow="»"
 
 ## Section marking
 	sec="********************************************************"

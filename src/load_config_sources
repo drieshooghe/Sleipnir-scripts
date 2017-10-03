@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # For this script to work, the script directory must be added to the path
 
