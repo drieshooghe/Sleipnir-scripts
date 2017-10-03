@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Load sources
 source "$SCRIPTDIR/src/load_script_sources" && load_script_sources
 
 ### SET VARIABLES ###
 	# Parameters
-	     section="$1"
-	     upper=${section^^}
-	     file=${SCRIPTDIR}/src/cnf_aliases
+		section="$1"
+		upper=$1:u
+		file=${SCRIPTDIR}/src/cnf_aliases
 
 ### DETERMINE ACTION/SECTION ###
 case "$1" in
@@ -15,7 +15,7 @@ case "$1" in
             sed -n 's:.*###\(.*\)###.*:\1:p' ${file}
             ;;
         *)
-            sed -n "/### ${upper} ###/,/## end/p" ${file}
+            sed -n "/### $1:u ###/,/## end/p" ${file}
             ;;
 
 esac
