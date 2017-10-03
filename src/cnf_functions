@@ -1,7 +1,12 @@
 #!/bin/zsh
 
-function get_current_ssid {
+function whereami {
 
-        echo "$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | sed -e "s/^  *SSID: //p" -e d)"
+	location="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | sed -e "s/^  *SSID: //p" -e d)"
 
+	if [[ ${location} = "telenet-3F495"  ]]; then
+		echo "home";
+	elif [[ ${location} = "DASmedia-5G"  ]]; then
+		echo "dasmedia";
+	fi
 }
